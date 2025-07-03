@@ -1,7 +1,15 @@
-const CHUNK_PUBLIC_PATH = "server/app/api/generate/grammar/route.js";
-const runtime = require("../../../../chunks/[turbopack]_runtime.js");
-runtime.loadChunk("server/chunks/node_modules_fe291c42._.js");
-runtime.loadChunk("server/chunks/[root-of-the-server]__181091cc._.js");
-runtime.getOrInstantiateRuntimeModule("[project]/.next-internal/server/app/api/generate/grammar/route/actions.js [app-rsc] (server actions loader, ecmascript)", CHUNK_PUBLIC_PATH);
-runtime.getOrInstantiateRuntimeModule("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/generate/grammar/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)", CHUNK_PUBLIC_PATH);
-module.exports = runtime.getOrInstantiateRuntimeModule("[project]/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/app/api/generate/grammar/route.ts [app-route] (ecmascript)\" } [app-route] (ecmascript)", CHUNK_PUBLIC_PATH).exports;
+(()=>{var e={};e.id=397,e.ids=[397],e.modules={846:e=>{"use strict";e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},3033:e=>{"use strict";e.exports=require("next/dist/server/app-render/work-unit-async-storage.external.js")},3295:e=>{"use strict";e.exports=require("next/dist/server/app-render/after-task-async-storage.external.js")},4870:e=>{"use strict";e.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},6314:(e,a,r)=>{"use strict";r.r(a),r.d(a,{patchFetch:()=>c,routeModule:()=>d,serverHooks:()=>g,workAsyncStorage:()=>l,workUnitAsyncStorage:()=>m});var t={};r.r(t),r.d(t,{POST:()=>u});var n=r(6559),s=r(8088),i=r(7719),o=r(2190);let p=new(r(7449)).ij(process.env.GEMINI_API_KEY||"");async function u(e){try{let{level:a}=await e.json();if(!a||!["N5","N4","N3","N2","N1"].includes(a))return o.NextResponse.json({error:"Level tidak valid."},{status:400});let r=p.getGenerativeModel({model:"gemini-1.5-flash",generationConfig:{responseMimeType:"application/json"}}),t=`
+      Buat daftar 10 pola kalimat (grammar points) untuk level JLPT ${a} dalam bahasa Jepang.
+      Untuk setiap pola kalimat, berikan informasi berikut dalam format JSON yang valid: title, meaning (dalam Bahasa Indonesia), formation, example (kalimat contoh dalam bahasa Jepang beserta terjemahannya dalam Bahasa Indonesia), dan explanation (penjelasan detail dalam Bahasa Indonesia).
+      
+      Struktur JSON harus berupa array dari objek, seperti ini:
+      [
+        {
+          "title": "〜は〜です (wa... desu)",
+          "meaning": "Adalah (Topik)",
+          "formation": "Kata Benda は Kata Benda です",
+          "example": "わたしはがくせいです。(Watashi wa gakusei desu.) - Saya adalah seorang siswa.",
+          "explanation": "Pola kalimat paling dasar dalam bahasa Jepang untuk menyatakan identitas atau topik."
+        }
+      ]
+    `,n=(await r.generateContent(t)).response.text(),s=JSON.parse(n);return o.NextResponse.json(s)}catch(e){return console.error("Gemini API Error:",e),o.NextResponse.json({error:"Gagal men-generate data dari AI."},{status:500})}}let d=new n.AppRouteRouteModule({definition:{kind:s.RouteKind.APP_ROUTE,page:"/api/generate/grammar/route",pathname:"/api/generate/grammar",filename:"route",bundlePath:"app/api/generate/grammar/route"},resolvedPagePath:"C:\\Users\\Carlos\\Desktop\\language\\bahasa-jepang-2.0\\app\\api\\generate\\grammar\\route.ts",nextConfigOutput:"",userland:t}),{workAsyncStorage:l,workUnitAsyncStorage:m,serverHooks:g}=d;function c(){return(0,i.patchFetch)({workAsyncStorage:l,workUnitAsyncStorage:m})}},6487:()=>{},8335:()=>{},9294:e=>{"use strict";e.exports=require("next/dist/server/app-render/work-async-storage.external.js")}};var a=require("../../../../webpack-runtime.js");a.C(e);var r=e=>a(a.s=e),t=a.X(0,[447,580,449],()=>r(6314));module.exports=t})();

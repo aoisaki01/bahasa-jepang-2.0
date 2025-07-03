@@ -11,18 +11,19 @@ const JishoAPI = "https://jisho.org/api/v1/search/words";
 
 export async function GET(
   request: Request,
-  { params }: { params: { level: string } }
+  { params }: { params: Promise<{ level: string }> }
 ) {
   const { searchParams } = new URL(request.url);
-  const page = searchParams.get('page') || '1'; // Ambil nomor halaman
-  const level = params.level.toLowerCase(); // n5, n4, dst.
+  const page = searchParams.get('page') || '1';
+  const { level } = await params;
+  const normalizedLevel = level.toLowerCase(); // n5, n4, dst.
 
-  if (!['n5', 'n4', 'n3', 'n2', 'n1'].includes(level)) {
+  if (!['n5', 'n4', 'n3', 'n2', 'n1'].includes(normalizedLevel)) {
     return NextResponse.json({ error: 'Level tidak valid.' }, { status: 400 });
   }
 
   try {
-    const keyword = encodeURIComponent(`#jlpt-${level}`);
+    const keyword = encodeURIComponent(`#jlpt-${normalizedLevel}`);
     const apiUrl = `${JishoAPI}?keyword=${keyword}&page=${page}`;
     
     const response = await fetch(apiUrl);

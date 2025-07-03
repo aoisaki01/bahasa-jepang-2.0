@@ -1,0 +1,18 @@
+{
+  "/api/dictionary/translate-word/route": "/api/dictionary/translate-word",
+  "/_not-found/page": "/_not-found",
+  "/api/generate/grammar/route": "/api/generate/grammar",
+  "/api/jisho/[level]/route": "/api/jisho/[level]",
+  "/api/jisho/search/route": "/api/jisho/search",
+  "/api/translate/route": "/api/translate",
+  "/api/words/[level]/route": "/api/words/[level]",
+  "/api/test/generate/route": "/api/test/generate",
+  "/grammar/page": "/grammar",
+  "/dictionary/page": "/dictionary",
+  "/flashcards/page": "/flashcards",
+  "/guess/page": "/guess",
+  "/marked/page": "/marked",
+  "/page": "/",
+  "/reading/page": "/reading",
+  "/test/page": "/test"
+}
