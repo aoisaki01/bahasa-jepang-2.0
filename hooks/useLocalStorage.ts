@@ -1,10 +1,9 @@
 import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 
-// Perubahan utama ada pada return type fungsi ini
 export function useLocalStorage<T>(
   key: string, 
   initialValue: T
-): [T, Dispatch<SetStateAction<T>>] { // <-- TIPE DIPERBARUI DI SINI
+): [T, Dispatch<SetStateAction<T>>] {
   
   const [storedValue, setStoredValue] = useState<T>(() => {
     if (typeof window === 'undefined') {
@@ -28,6 +27,5 @@ export function useLocalStorage<T>(
     }
   }, [key, storedValue]);
 
-  // Kita kembalikan setStoredValue yang merupakan Dispatch<SetStateAction<T>>
   return [storedValue, setStoredValue];
 }

@@ -1,14 +1,5 @@
 import { NextResponse } from 'next/server';
 
-// Tipe data untuk output yang kita inginkan
-interface Word {
-  word: string;
-  reading: string;
-  meaning: string;
-}
-
-const JishoAPI = "https://jisho.org/api/v1/search/words";
-
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ level: string }> }
@@ -16,7 +7,7 @@ export async function GET(
   const { searchParams } = new URL(request.url);
   const page = searchParams.get('page') || '1';
   const { level } = await params;
-  const normalizedLevel = level.toLowerCase(); // n5, n4, dst.
+  const normalizedLevel = level.toLowerCase();
 
   if (!['n5', 'n4', 'n3', 'n2', 'n1'].includes(normalizedLevel)) {
     return NextResponse.json({ error: 'Level tidak valid.' }, { status: 400 });
@@ -24,8 +15,7 @@ export async function GET(
 
   try {
     const keyword = encodeURIComponent(`#jlpt-${normalizedLevel}`);
-    const apiUrl = `${JishoAPI}?keyword=${keyword}&page=${page}`;
-    
+    const apiUrl = `https://jisho.org/api/v1/search/words?keyword=${keyword}&page=${page}`;
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
@@ -38,18 +28,16 @@ export async function GET(
       throw new Error("Format data dari Jisho API tidak terduga.");
     }
 
-    // Ubah format data dari Jisho ke format sederhana yang kita inginkan
-    const formattedData: Word[] = data.map((item: any) => ({
+    const formattedData = data.map((item: any) => ({
+      slug: item.slug,
       word: item.japanese[0]?.word || item.japanese[0]?.reading,
       reading: item.japanese[0]?.reading,
-      // Ambil definisi bahasa Inggris pertama sebagai arti
       meaning: item.senses[0]?.english_definitions[0] || 'Tidak ada arti'
     }));
-    
-    return NextResponse.json(formattedData);
 
+    return NextResponse.json(formattedData);
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Terjadi kesalahan tidak diketahui";
+    const message = error instanceof Error ? error.message : "Terjadi kesalahan";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
