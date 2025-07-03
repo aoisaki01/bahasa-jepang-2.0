@@ -1,0 +1,23 @@
+ 
+# Dependencies
+# Direktori ini berisi ribuan file kecil yang tidak perlu dilacak.
+# Cukup jalankan 'npm install' untuk mengunduhnya kembali.
+/node_modules
+
+# Environment Variables
+# File ini berisi kunci API, password database, dan rahasia lainnya.
+# JANGAN PERNAH simpan file ini di Git.
+.env
+.env.local
+.env.*.local
+
+# Log files
+# File log yang dibuat saat development atau production.
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+# Folder hasil kompilasi atau build proyek.
+/build
+/dist
