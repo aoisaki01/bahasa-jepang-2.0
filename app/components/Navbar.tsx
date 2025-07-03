@@ -9,7 +9,8 @@ import { Menu, X } from 'lucide-react';
 const navLinks = [
   { href: '/flashcards', label: 'Flashcard' },
   { href: '/guess', label: 'Guess' },
-  { href: '/grammar', label: 'Grammar' }, // <-- Link Baru
+  { href: '/grammar', label: 'Grammar' },
+  { href: '/test', label: 'Test' }, // <-- Link Baru
   { href: '/reading', label: 'Membaca' },
   { href: '/dictionary', label: 'Kamus' },
   { href: '/marked', label: 'Ditandai' },

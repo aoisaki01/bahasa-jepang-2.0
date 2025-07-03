@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import FallingPetals from './components/FallingPetals';
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       transition={{ duration: 0.5 }}
       className="text-center flex flex-col items-center justify-center min-h-[70vh]"
     >
+      <FallingPetals />
       <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4">
         Mulai Belajar Jepang.
       </h1>

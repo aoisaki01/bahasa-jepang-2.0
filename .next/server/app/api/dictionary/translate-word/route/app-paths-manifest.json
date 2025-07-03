@@ -1,0 +1,3 @@
+{
+  "/api/dictionary/translate-word/route": "app/api/dictionary/translate-word/route.js"
+}

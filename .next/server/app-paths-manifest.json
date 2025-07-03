@@ -1,0 +1,16 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/dictionary/translate-word/route": "app/api/dictionary/translate-word/route.js",
+  "/api/generate/grammar/route": "app/api/generate/grammar/route.js",
+  "/api/jisho/search/route": "app/api/jisho/search/route.js",
+  "/api/test/generate/route": "app/api/test/generate/route.js",
+  "/api/translate/route": "app/api/translate/route.js",
+  "/api/words/[level]/route": "app/api/words/[level]/route.js",
+  "/dictionary/page": "app/dictionary/page.js",
+  "/flashcards/page": "app/flashcards/page.js",
+  "/grammar/page": "app/grammar/page.js",
+  "/guess/page": "app/guess/page.js",
+  "/page": "app/page.js",
+  "/reading/page": "app/reading/page.js",
+  "/test/page": "app/test/page.js"
+}
