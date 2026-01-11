@@ -1,65 +1,77 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
+import { characterProfile } from "@/lib/character";
+import { ArrowRight, MessageCircle } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="flex min-h-screen flex-col items-center justify-center p-6 sm:p-24 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 z-0 bg-neutral-950">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-500/20 rounded-full blur-[100px]" />
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-500/10 rounded-full blur-[80px]" />
+      </div>
+
+      <div className="relative z-10 max-w-5xl w-full flex flex-col md:flex-row items-center gap-12">
+        {/* Left: Text Content */}
+        <div className="flex-1 text-center md:text-left space-y-6">
+          <div className="inline-block px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 text-sm font-medium mb-4">
+            Gen Z Japanese Learning Companion
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-neutral-400">
+            Learn Japanese with <br />
+            <span className="text-pink-400">{characterProfile.name}</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg text-neutral-400 leading-relaxed max-w-lg mx-auto md:mx-0">
+            {characterProfile.role}. {characterProfile.description}
+            <br />
+            Yuriko siap menemani kamu belajar Bahasa Jepang dengan santai!
           </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+            <Link href="/chat">
+              <Button size="lg" className="rounded-full text-lg px-8 bg-pink-600 hover:bg-pink-700 text-white shadow-lg shadow-pink-500/25 transition-all">
+                <MessageCircle className="mr-2 h-5 w-5" /> Start Chatting
+              </Button>
+            </Link>
+
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+
+        {/* Right: Character Image */}
+        <div className="flex-1 relative">
+          <div className="w-[300px] h-[300px] md:w-[450px] md:h-[450px] relative mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-neutral-900 z-10 opacity-20 pointer-events-none" />
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src={characterProfile.avatar}
+              alt={characterProfile.name}
+              fill
+              className="object-cover rounded-3xl shadow-2xl shadow-pink-900/20 border border-neutral-800"
+              priority
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {/* Floating details */}
+            <div className="absolute -bottom-6 -left-6 bg-neutral-900/90 backdrop-blur border border-neutral-800 p-4 rounded-2xl shadow-xl z-20 hidden md:block">
+              <div className="flex items-center gap-3">
+                <div className="text-3xl">🇯🇵</div>
+                <div>
+                  <p className="text-xs text-neutral-500 uppercase tracking-wider font-semibold">Native</p>
+                  <p className="font-bold text-neutral-200">Japanese</p>
+                </div>
+              </div>
+            </div>
+            <div className="absolute -top-6 -right-6 bg-neutral-900/90 backdrop-blur border border-neutral-800 p-4 rounded-2xl shadow-xl z-20 hidden md:block">
+              <div className="flex items-center gap-3">
+                <div className="text-3xl">🇮🇩</div>
+                <div>
+                  <p className="text-xs text-neutral-500 uppercase tracking-wider font-semibold">Fluent</p>
+                  <p className="font-bold text-neutral-200">Indonesian</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }

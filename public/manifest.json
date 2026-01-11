@@ -1,0 +1,23 @@
+{
+    "name": "Yuriko Chat",
+    "short_name": "Yuriko",
+    "description": "Learn Japanese with Yuriko Kuchiyama",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#ec4899",
+    "icons": [
+        {
+            "src": "/miyazyuki-avatar.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/miyazyuki-avatar.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ]
+}

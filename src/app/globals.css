@@ -1,26 +1,119 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Gemini Light Mode */
+    --background: #ffffff;
+    --foreground: #1f1f1f;
+
+    --card: #f0f4f9;
+    --card-foreground: #1f1f1f;
+
+    --popover: #ffffff;
+    --popover-foreground: #1f1f1f;
+
+    --primary: #0b57d0;
+    /* Gemini Blue */
+    --primary-foreground: #ffffff;
+
+    --secondary: #f0f4f9;
+    --secondary-foreground: #1f1f1f;
+
+    --muted: #f0f4f9;
+    --muted-foreground: #444746;
+
+    --accent: #dbeafe;
+    --accent-foreground: #001d35;
+
+    --destructive: #b3261e;
+    --destructive-foreground: #ffffff;
+
+    --border: #e1e3e1;
+    --input: #e1e3e1;
+    --ring: #0b57d0;
+    --radius: 1.5rem;
+    /* More rounded */
+  }
+
+  .dark {
+    /* Gemini Dark Mode */
+    --background: #131314;
+    --foreground: #e3e3e3;
+
+    --card: #1e1f20;
+    --card-foreground: #e3e3e3;
+
+    --popover: #1e1f20;
+    --popover-foreground: #e3e3e3;
+
+    --primary: #a8c7fa;
+    /* Gemini Light Blue */
+    --primary-foreground: #003355;
+
+    --secondary: #1e1f20;
+    --secondary-foreground: #e3e3e3;
+
+    --muted: #1e1f20;
+    --muted-foreground: #c4c7c5;
+
+    --accent: #004a77;
+    --accent-foreground: #c2e7ff;
+
+    --destructive: #f2b8b5;
+    --destructive-foreground: #601410;
+
+    --border: #444746;
+    --input: #444746;
+    --ring: #a8c7fa;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+
+  /* Minimal scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-300 dark:bg-neutral-700 rounded-full hover:bg-neutral-400 dark:hover:bg-neutral-600 transition-colors;
+  }
 }
